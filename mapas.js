@@ -29,6 +29,7 @@ L.control.layers(baseMaps,null).addTo(map);
 
 L.control.scale().addTo(map);
 
+/*
 map.locate({setView: true, maxZoom: 15});
 
 function onLocationFound(e) {
@@ -46,3 +47,4 @@ function onLocationFound(e) {
 
 map.on('locationfound', onLocationFound);
 
+*/
