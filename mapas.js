@@ -1,5 +1,5 @@
 var map = L.map('map').
-setView([37.185748, -3.610183],
+setView([37.174320, -3.598454],
 15);
 
 var mapLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -17,14 +17,28 @@ map.addLayer(googleLayer);
 var googleRoadmapLayer = new L.Google('ROADMAP');
 map.addLayer(googleRoadmapLayer);
 
+/* Aqui va la capa con los markets*/
+
+var LosDiamantes= L.marker([37.173712, -3.598304]).bindPopup('Comentario POPUP'),
+    Bar2	= L.marker([37.173635, -3.598208]).bindPopup('Comentario POPUP'),
+    Bar3	= L.marker([37.174283, -3.598109]).bindPopup('Comentario POPUP'),
+    Bar4	= L.marker([37.173417, -3.597709]).bindPopup('Comentario POPUP');
+
+var Bares = L.layerGroup([LosDiamantes,Bar2,Bar3,Bar4]);
+
+
+/*------------------------------------------------*/
+
 var baseMaps = {
 	'Google Roadmap' : googleRoadmapLayer,
 	'Google' : googleLayer,
 	'leaflet' : mapLayer
 };
 
+var overlayMaps = {"Bares": Bares};
 
-L.control.layers(baseMaps,null).addTo(map);
+
+L.control.layers(baseMaps,overlayMaps).addTo(map);
 
 
 L.control.scale().addTo(map);
