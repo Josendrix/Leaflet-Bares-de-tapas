@@ -27,8 +27,8 @@ map.addLayer(googleRoadmapLayer);
 
 /* Aqui va la capa con los markets*/
 
-var LosDiamantes= L.marker([37.173712, -3.598304]).bindPopup('Comentario POPUP'),
-    Bar2	= L.marker([37.173635, -3.598208]).bindPopup('Comentario POPUP'),
+var LosDiamantes= L.marker([37.169413, -3.599356]).bindPopup('Bar-aliatar: 2€'),
+    Bar2	= L.marker([37.179966, -3.600563]).bindPopup('Tacon flamenco: 2€'),
     Bar3	= L.marker([37.174283, -3.598109]).bindPopup('Comentario POPUP'),
     Bar4	= L.marker([37.173417, -3.597709]).bindPopup('Comentario POPUP');
 
