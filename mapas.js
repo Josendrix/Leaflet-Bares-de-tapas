@@ -1,10 +1,18 @@
+﻿// icono de autibuses.
+
+var BusIcon = L.icon({
+    iconUrl: 'bus.png',
+
+    iconSize:[50, 60], // Tamaño del icono.
+});
+
 var map = L.map('map').
 setView([37.174320, -3.598454],
 15);
 
 var mapLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-maxZoom: 18
+maxZoom: 18, 
 }).addTo(map);
 
 /*
@@ -26,6 +34,15 @@ var LosDiamantes= L.marker([37.173712, -3.598304]).bindPopup('Comentario POPUP')
 
 var Bares = L.layerGroup([LosDiamantes,Bar2,Bar3,Bar4]);
 
+// capa de las lineas de autobuses.
+var autobuses =L.marker([37.176448, -3.597781],{icon: BusIcon}).addTo(map).bindPopup('Parada 414: SN1,LAC'),
+	bus1 =L.marker([37.172618, -3.599508],{icon: BusIcon}).addTo(map).bindPopup('Parada 74: SN1,121(nocturno),LAC'),
+	bus2 =L.marker([37.175482, -3.596622],{icon: BusIcon}).addTo(map).bindPopup('Parada 487: C5'),
+	bus3 =L.marker([37.172439, -3.597167],{icon: BusIcon}).addTo(map).bindPopup('Parada 1434: C5'),
+	bus4 =L.marker([37.177051, -3.59522],{icon: BusIcon}).addTo(map).bindPopup('Parada 1105: C1,C2'),
+	bus5 =L.marker([37.173636, -3.595364],{icon: BusIcon}).addTo(map).bindPopup('Parada 1351: C3,C4');
+
+var bus = L.layerGroup([autobuses,bus1,bus2,bus3,bus4,bus5]);
 
 /*------------------------------------------------*/
 
@@ -35,7 +52,8 @@ var baseMaps = {
 	'leaflet' : mapLayer
 };
 
-var overlayMaps = {"Bares": Bares};
+var overlayMaps = {"Bares": Bares, "bus": bus};
+
 
 
 L.control.layers(baseMaps,overlayMaps).addTo(map);
