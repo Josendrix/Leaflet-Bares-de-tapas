@@ -27,12 +27,13 @@ map.addLayer(googleRoadmapLayer);
 
 /* Aqui va la capa con los markets*/
 
-var LosDiamantes= L.marker([37.169413, -3.599356]).bindPopup('Bar-aliatar: 2€'),
-    Bar2	= L.marker([37.179966, -3.600563]).bindPopup('Tacon flamenco: 2€'),
-    Bar3	= L.marker([37.174283, -3.598109]).bindPopup('Comentario POPUP'),
-    Bar4	= L.marker([37.173417, -3.597709]).bindPopup('Comentario POPUP');
+var Bar1	= L.marker([37.169413, -3.599356]).bindPopup('<b>Bar-Aliatar</b><br>Precio: 2€'),
+    Bar2	= L.marker([37.179966, -3.600563]).bindPopup('<b>Tacon flamenco</b><br>Precio: 2€'),
+    Bar3	= L.marker([37.174198, -3.598251]).bindPopup('<b>La Blanca Paloma</b><br>No se puede elegir la tapa<br>Tapa escasa<br>Poca variedad de tapas<br>Es más bien restaurante por raciones<br>Precio:2.1€<br>Tapa probada: Berengenas fritas'),
+    Bar4	= L.marker([37.173455, -3.597831]).bindPopup('<b>Las Copas</b><br>No se puede elegir la tapa<br>Tapa escasa<br>Precio: 2.20€<br>Tapa probada: Boquerones en vinagre'),
+    Bar5	= L.marker([37.173204, -3.597239]).bindPopup('<b>La Chopera</b><br>No se pujede elegir la tapa<br>Buena tapa pero de tamaño normalito<br>Precio: 2.10€<br>Tapa probada: Mini rosca de jamón con tomate y aceitunas');
 
-var Bares = L.layerGroup([LosDiamantes,Bar2,Bar3,Bar4]);
+var Bares = L.layerGroup([Bar1,Bar2,Bar3,Bar4,Bar5]);
 
 // capa de las lineas de autobuses.
 var autobuses =L.marker([37.176448, -3.597781],{icon: BusIcon}).addTo(map).bindPopup('Parada 414: SN1,LAC'),
