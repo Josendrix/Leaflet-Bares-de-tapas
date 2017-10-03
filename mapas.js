@@ -26,6 +26,12 @@ map.addLayer(L.tileLayer);
 	var googleRoadmapLayer = new L.Google('ROADMAP');
 	map.addLayer(googleRoadmapLayer);
 
+
+
+
+
+
+
 /* Aqui va la capa con los markets*/
 
 	var Bar1	= L.marker([37.169413, -3.599356]).bindPopup('<b>Bar-Aliatar</b><br>Precio: 2€'),
@@ -46,6 +52,8 @@ map.addLayer(L.tileLayer);
 
 	var bus = L.layerGroup([autobuses,bus1,bus2,bus3,bus4,bus5]);
 
+
+
 /*------------------------------------------------*/
 
 	var baseMaps = {
@@ -54,8 +62,8 @@ map.addLayer(L.tileLayer);
 		'leaflet' : mapLayer
 	};
 
-	var overlayMaps = {"Bares": Bares, "bus": bus};
 
+	var overlayMaps = {"Bares": Bares, "bus": bus};
 
 
 	L.control.layers(baseMaps,overlayMaps).addTo(map);
@@ -65,6 +73,33 @@ map.addLayer(L.tileLayer);
 	map.scrollWheelZoom.disable();//no zoom rueda raton
 	map.keyboard.disable(); //no movimiento con teclado
 	map.removeControl(map.zoomControl); //desabilita los botones para el zoom
+
+
+
+
+
+
+
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = ["Autobuses . . . .", "Bares de tapas"],
+        labels = ["bus.png","./leaflet/images/marker-icon.png"];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            grades[i] + (" <img src="+ labels[i] +" height='50' width='40'>") +'<br>';
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+
 
 /*L.control.scale().addTo(map);
 
