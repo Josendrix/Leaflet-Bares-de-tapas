@@ -59,10 +59,15 @@ var overlayMaps = {"Bares": Bares, "bus": bus};
 
 L.control.layers(baseMaps,overlayMaps).addTo(map);
 
+map.dragging.disable(); //no permite mover el mapa
+map.doubleClickZoom.disable();//no zoom doble click
+map.scrollWheelZoom.disable();//no zoom rueda raton
+map.keyboard.disable(); //no movimiento con teclado
+map.removeControl(map.zoomControl); //desabilita los botones para el zoom
 
-L.control.scale().addTo(map);
+/*L.control.scale().addTo(map);
 
-/*
+
 map.locate({setView: true, maxZoom: 15});
 
 function onLocationFound(e) {
