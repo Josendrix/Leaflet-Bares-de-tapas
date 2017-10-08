@@ -13,7 +13,8 @@
 
 	var mapLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-		maxZoom: 18, 
+		maxZoom: 19,
+		minZoom: 14,
 		}).addTo(map);
 
 /*
@@ -22,10 +23,13 @@ map.addLayer(L.tileLayer);
 
 	var googleLayer = new L.Google();
 	map.addLayer(googleLayer);
-
 	var googleRoadmapLayer = new L.Google('ROADMAP');
 	map.addLayer(googleRoadmapLayer);
-
+	var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+	mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+	var streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr, maxZoom: 17, minZoom: 14.0});
 
 
 
@@ -59,7 +63,8 @@ map.addLayer(L.tileLayer);
 	var baseMaps = {
 		'Google Roadmap' : googleRoadmapLayer,
 		'Google' : googleLayer,
-		'leaflet' : mapLayer
+		'leaflet' : mapLayer,
+		'Mapa Callejero' : streets
 	};
 
 
@@ -69,10 +74,10 @@ map.addLayer(L.tileLayer);
 	L.control.layers(baseMaps,overlayMaps).addTo(map);
 
 	map.dragging.disable(); //no permite mover el mapa
-	map.doubleClickZoom.disable();//no zoom doble click
-	map.scrollWheelZoom.disable();//no zoom rueda raton
-	map.keyboard.disable(); //no movimiento con teclado
-	map.removeControl(map.zoomControl); //desabilita los botones para el zoom
+        map.doubleClickZoom.disable();//no zoom doble click
+        map.scrollWheelZoom.disable();//no zoom rueda raton
+        map.keyboard.disable(); //no movimiento con teclado
+        map.removeControl(map.zoomControl); //desabilita los botones para el zoom
 
 
 
